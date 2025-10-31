@@ -55,6 +55,8 @@ public class SimuladorSubstituicao extends JFrame {
             Map<String, Integer> resultados = new LinkedHashMap<>();
             resultados.put("FIFO", FIFO.simular(pages, frames));
             resultados.put("LRU", LRU.simular(pages, frames));
+            resultados.put("Clock", Clock.simular(pages, frames));
+            resultados.put("NFU", NFU.simular(pages, frames));
 
             StringBuilder sb = new StringBuilder("--- Resultados ---\n");
             for (var entry : resultados.entrySet())
