@@ -1,16 +1,16 @@
 ## UNIVERSIDADE DE FORTALEZA
-**CENTRO DE CIÊNCIAS TECNOLÓGICAS**
-**CURSO: CIÊNCIA DA COMPUTAÇÃO**
+*CENTRO DE CIÊNCIAS TECNOLÓGICAS*
+*CURSO: CIÊNCIA DA COMPUTAÇÃO*
 
 # Simulador de Algoritmos de Substituição de Páginas
 
-**Autores:**
+*Autores:*
 * Matheus Diógenes Amorim - 2310277
 * Luiz Vitor Dantas Freitas - 2320410
 
 * Link para github: https://github.com/MatheuzinDev/Simulador-Algoritmos-de-Paginacao
 
-**Palavras-chave:** Memória virtual. Algoritmos de substituição. Faltas de página. Simulação de algoritmos. Desempenho de sistemas.
+*Palavras-chave:* Memória virtual. Algoritmos de substituição. Faltas de página. Simulação de algoritmos. Desempenho de sistemas.
 
 ## Resumo
 
@@ -30,15 +30,44 @@ Este trabalho foca na implementação de quatro desses algoritmos para fins de s
 
 O projeto foi desenvolvido na linguagem de programação Java e é composto por cinco classes principais:
 
-* **Main.java:** Serve como o ponto de entrada da simulação. Esta classe utiliza a biblioteca Scanner para coletar duas entradas do usuário: a sequência de referências de página (uma string de números separados por espaço) e o número total de quadros de memória (um inteiro). Em seguida, invoca o método simular de cada um dos seis algoritmos, imprimindo o resultado (número de faltas de página) de cada um.
-* **FIFO.java:** Implementa o algoritmo First-In, First-Out. Utiliza uma lista encadeada para gerenciar as páginas na memória. Quando uma falta de página ocorre e a memória está cheia, a página na frente da fila (a mais antiga) é removida.
-* **LRU.java:** Implementa o algoritmo Least Recently Used. Utiliza um LinkedHashSet, uma estrutura de dados que mantém a ordem de inserção. Como o nome diz, ele pega a página mais recentemente usada, que já está na memória, e a coloca no final da fila, assim, a primeira página da fila é a menos recentemente usada, que será removida no caso de uma falta de página.
-* **Clock.java:** Implementa o algoritmo Relógio (ou Segunda Chance). Utiliza um array para as páginas e um array booleano paralelo para simular o "bit de uso". Um ponteiro circular percorre os quadros. Ao procurar uma página para remover, se o bit de uso for true, ele é alterado para false, dando uma segunda chance para a página; se for false, a página é substituída.
-* **NFU.java:** Implementa o algoritmo Not Frequently Used. Utiliza um Map para manter um contador de acessos para cada página. Em uma falta, a página presente na memória com o menor valor no contador de frequência é escolhida para ser substituída.
+* *Main.java:* Serve como o ponto de entrada da simulação. Esta classe utiliza a biblioteca Scanner para coletar duas entradas do usuário: a sequência de referências de página (uma string de números separados por espaço) e o número total de quadros de memória (um inteiro). Em seguida, invoca o método simular de cada um dos seis algoritmos, imprimindo o resultado (número de faltas de página) de cada um.
+* *FIFO.java:* Implementa o algoritmo First-In, First-Out. Utiliza uma lista encadeada para gerenciar as páginas na memória. Quando uma falta de página ocorre e a memória está cheia, a página na frente da fila (a mais antiga) é removida.
+* *LRU.java:* Implementa o algoritmo Least Recently Used. Utiliza um LinkedHashSet, uma estrutura de dados que mantém a ordem de inserção. Como o nome diz, ele pega a página mais recentemente usada, que já está na memória, e a coloca no final da fila, assim, a primeira página da fila é a menos recentemente usada, que será removida no caso de uma falta de página.
+* *Clock.java:* Implementa o algoritmo Relógio (ou Segunda Chance). Utiliza um array para as páginas e um array booleano paralelo para simular o "bit de uso". Um ponteiro circular percorre os quadros. Ao procurar uma página para remover, se o bit de uso for true, ele é alterado para false, dando uma segunda chance para a página; se for false, a página é substituída.
+* *NFU.java:* Implementa o algoritmo Not Frequently Used. Utiliza um Map para manter um contador de acessos para cada página. Em uma falta, a página presente na memória com o menor valor no contador de frequência é escolhida para ser substituída.
 
 ### Desenvolvimento Front-End
 
 Além da versão executada via terminal, foi implementada uma interface gráfica utilizando a biblioteca Java Swing, com o propósito de proporcionar uma experiência mais intuitiva e visual ao usuário. Essa interface foi estruturada por meio da classe Simulador Substituicao, que organiza os componentes principais do sistema em um layout dividido entre entrada de dados, exibição textual dos resultados e um painel gráfico comparativo.
+
+## Como rodar o projeto
+
+Antes de compilar e executar, *entre na pasta src* onde estão os arquivos .java:
+
+*Comando no terminal:*
+
+cd .\src\
+
+A classe Main.java é o ponto de entrada para a execução via terminal.  
+Para rodar:
+
+*1. Compile o projeto:*
+
+javac Main.java FIFO.java LRU.java Clock.java NFU.java
+
+*2. Execute:*
+
+java Main
+
+A interface gráfica foi implementada na classe SimuladorSubstituicao.java, utilizando a biblioteca Java Swing.
+
+*1. Compile a interface:*
+
+javac SimuladorSubstituicao.java
+
+*2. Execute:*
+
+java SimuladorSubstituicao
 
 ## Resultados e Discussão
 
@@ -46,10 +75,10 @@ A execução do programa Main fornece uma saída comparativa direta do número d
 
 Os resultados dos algoritmos foram os seguintes:
 
-* **FIFO:** É o mais simples de implementar, mas geralmente apresenta o pior desempenho, pois pode remover páginas frequentemente usadas que apenas tiveram a má sorte de chegar cedo.
-* **LRU:** Geralmente tem um desempenho excelente, muito próximo do Ótimo. Sua lógica baseia-se no princípio da localidade temporal (se uma página foi usada recentemente, é provável que seja usada novamente). Sua implementação, no entanto, pode ser custosa, exigindo atualização da estrutura de dados a cada acesso.
-* **Clock:** Apresenta um desempenho muito bom, geralmente melhor que o FIFO e ligeiramente inferior ao LRU. É uma implementação de "compromisso", oferecendo uma boa aproximação do LRU com uma sobrecarga de sistema muito menor, sendo amplamente utilizado na prática.
-* **NFU:** É uma aproximação simples do LRU, mas seu contador não "esquece" o histórico. Uma página muito usada no passado, mas não mais relevante, pode parecer mais importante do que uma página usada poucas vezes, mas recentemente, o que é uma falha em sua lógica.
+* *FIFO:* É o mais simples de implementar, mas geralmente apresenta o pior desempenho, pois pode remover páginas frequentemente usadas que apenas tiveram a má sorte de chegar cedo.
+* *LRU:* Geralmente tem um desempenho excelente, muito próximo do Ótimo. Sua lógica baseia-se no princípio da localidade temporal (se uma página foi usada recentemente, é provável que seja usada novamente). Sua implementação, no entanto, pode ser custosa, exigindo atualização da estrutura de dados a cada acesso.
+* *Clock:* Apresenta um desempenho muito bom, geralmente melhor que o FIFO e ligeiramente inferior ao LRU. É uma implementação de "compromisso", oferecendo uma boa aproximação do LRU com uma sobrecarga de sistema muito menor, sendo amplamente utilizado na prática.
+* *NFU:* É uma aproximação simples do LRU, mas seu contador não "esquece" o histórico. Uma página muito usada no passado, mas não mais relevante, pode parecer mais importante do que uma página usada poucas vezes, mas recentemente, o que é uma falha em sua lógica.
 
 ## Conclusão
 
