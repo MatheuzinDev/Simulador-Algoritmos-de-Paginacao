@@ -8,6 +8,8 @@
 * Matheus Diógenes Amorim - 2310277
 * Luiz Vitor Dantas Freitas - 2320410
 
+* Link para github: https://github.com/MatheuzinDev/Simulador-Algoritmos-de-Paginacao
+
 **Palavras-chave:** Memória virtual. Algoritmos de substituição. Faltas de página. Simulação de algoritmos. Desempenho de sistemas.
 
 ## Resumo
