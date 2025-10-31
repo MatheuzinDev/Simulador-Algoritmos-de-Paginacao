@@ -16,7 +16,5 @@ public class Main {
         System.out.println("LRU - " + LRU.simular(pages, frames) + " faltas de página");
         System.out.println("NFU - " + NFU.simular(pages, frames) + " faltas de página");
         System.out.println("CLOCK - " + Clock.simular(pages, frames) + " faltas de página");
-
-
     }
 }
